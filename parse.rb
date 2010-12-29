@@ -32,18 +32,22 @@ catalog['subject'].each do |subject|
 		# Found a course tag, get all the information about the course
 		if k == "course"
 			#print "-------\nCourse\n-------\n\n"
-			v[0].each do |k, v|
-				if k == "section"
-				#	print "-------\nSection\n-------\n\n"
-					v[0].each do |k, v|
+			v.each do |course|
+				course.each do |k, v|
+					if k == "section"
+					#	print "-------\nSection\n-------\n\n"
+						v.each do |section|
+							section.each do |k, v|
+								print "\t\t\t<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
+							end
+						end
+					#	print "-------\nSection END\n-------\n\n"
+					else
 						print "\t\t<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
 					end
-				#	print "-------\nSection END\n-------\n\n"
-				else
-					print "\t\t<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
 				end
-			end
 			#print "-------\nCourse END\n-------\n\n"
+			end
 		else
 			print "\t\t<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
 		end
