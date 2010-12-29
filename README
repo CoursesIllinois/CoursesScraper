@@ -1,0 +1,7 @@
+This application grabs course data from the University of Illinois website and parses it into a usable structure
+
+An example url looks like this
+http://courses.illinois.edu/cis/2011/spring/schedule/index.xml
+
+parse.rb - Script grabs the xml from the website and parses it into a usable form
+spring2011.xml - example of an xml file
