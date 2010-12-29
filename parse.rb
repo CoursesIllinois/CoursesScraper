@@ -1,6 +1,8 @@
 require 'net/http'
 require 'rexml/document'
 require 'rubygems'
+
+# gem install xmlsimple
 require 'xmlsimple'
 
 
@@ -35,34 +37,30 @@ def ParseSemester(year, season)
 		subjectCourses['subject'][0].each do |k, v|
 			# Found a course tag, get all the information about the course
 			if k == "course"
-				#print "-------\nCourse\n-------\n\n"
 				v.each do |course|
+					print "-------\nCourse START\n-------\n\n"
 					course.each do |k, v|
 						if k == "section"
-						#	print "-------\nSection\n-------\n\n"
+							print "-------\nSection\n-------\n\n"
 							v.each do |section|
 								section.each do |k, v|
 									print "\t\t\t<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
 								end
 							end
-						#	print "-------\nSection END\n-------\n\n"
+							print "-------\nSection END\n-------\n\n"
 						else
 							print "\t\t<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
 						end
 					end
-				#print "-------\nCourse END\n-------\n\n"
+					print "-------\nCourse END\n-------\n\n"
 				end
-			else
-				print "\t\t<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
 			end
 		end
 
 		# iterate through the elements of the subject 
 		# -General information about each subject/major
 		subject.each do |k,v|
-			if (v.is_a?(Array))
-				print "<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
-			end
+			print "<" + k + ">"+ v.to_s + "</"+ k+ ">\n"
 		end
 
 		print "\n"
